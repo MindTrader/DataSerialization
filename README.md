@@ -1,3 +1,10 @@
+![GitHub last commit](https://img.shields.io/github/last-commit/MindTrader/DataSerialization?style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues/MindTrader/DataSerialization?style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/MindTrader/DataSerialization?style=for-the-badge)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/MindTrader/DataSerialization?style=for-the-badge)
+![GitHub top language](https://img.shields.io/github/languages/top/MindTrader/DataSerialization?style=for-the-badge)
+
+
 # Data Serialization
 Данное приложение создано для решения следующей задачи:  сериализация приложенного файла test.XML в JSON. Полученный JSON должен выглядить (не обязательно быть один к одному) как test.JSON — оба файла лежат в папке "OtherFiles/TestFiles".
 
