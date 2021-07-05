@@ -1,5 +1,5 @@
 # Data Serialization
-Данное приложение создано для решения следующей задачи:  сериализация приложенного файла test.XML в JSON. Полученный JSON должен выглядить (не обязательно быть один к одному) как test.JSON — оба файла лежат в папке "InitialFiles" в корне репозитория.
+Данное приложение создано для решения следующей задачи:  сериализация приложенного файла test.XML в JSON. Полученный JSON должен выглядить (не обязательно быть один к одному) как test.JSON — оба файла лежат в папке "OtherFiles/InitialFiles".
 
 Целевая платформа - .Net Framework 4.6.1
 
@@ -8,30 +8,30 @@
 ## Описание работы приложения
 При запуске приложения на экране появится окно, где пользователю необходимо выбрать XML файл с содержимым для дальнейшей сериализации. Кнопка "Сериализовать данные" неактивна:
 
-<p align="center"><img src="https://github.com/MindTrader/Data_Serialization/blob/450fe91e61d4bcd12d038d12ce04d424aa8e0482/Screenshots/MainWindow.jpg" alt="Главное окно приложение" title="Главное окно приложение"/></p>
+<p align="center"><img src="https://github.com/MindTrader/DataSerialization/blob/98279c2bfb1ae6cc6d9b16efe086c1446f563c44/OtherFiles/Screenshots/MainWindow.jpg" alt="Главное окно приложение" title="Главное окно приложение"/></p>
 
 После нажатия на кнопку "Выбрать файл" пользователю необходимо будет указать исходный файл с помощью диалогового окна Windows для открытия файла. При выборе файла с расширением, отличным от .Xml,
 приложение выдаст пользователю предупреждение о несовпадении расширений и спросит решение хочет ли пользователь всё-таки использовать данный файл.
 
-<p align="center"><img src="https://github.com/MindTrader/Data_Serialization/blob/450fe91e61d4bcd12d038d12ce04d424aa8e0482/Screenshots/IncorrectExt.jpg" alt="Предупреждение о несовпадении расширения файла" title="Предупреждение о несовпадении расширения файла"/></p>
+<p align="center"><img src="https://github.com/MindTrader/DataSerialization/blob/98279c2bfb1ae6cc6d9b16efe086c1446f563c44/OtherFiles/Screenshots/IncorrectExt.jpg" alt="Предупреждение о несовпадении расширения файла" title="Предупреждение о несовпадении расширения файла"/></p>
 
 Если пользователь отвечает "Нет" или закрывает окно предупреждения, то выбор отменяется и пользователю придётся выбрать другой файл для дальнейшей сериализации.
 
 После выбора файла кнопка "Сериализовать данные" становится активной и пользователь может запустить процесс сериализации:
 
-<p align="center"><img src="https://github.com/MindTrader/Data_Serialization/blob/dd3cb601819b0028cd4e48c1f475ace1920765b6/Screenshots/SelectedXml.jpg" alt="Путь до выбранного файла" title="Путь до выбранного файла"/></p>
+<p align="center"><img src="https://github.com/MindTrader/DataSerialization/blob/98279c2bfb1ae6cc6d9b16efe086c1446f563c44/OtherFiles/Screenshots/SelectedXml.jpg" alt="Путь до выбранного файла" title="Путь до выбранного файла"/></p>
 
 После успешной сериализации данных пользователю будет сообщён результат и будет предложено сохранить json данные в файл, имя и место которого он может указать, используя Windows диалог для сохранения файлов:
 
-<p align="center"><img src="https://github.com/MindTrader/Data_Serialization/blob/dd3cb601819b0028cd4e48c1f475ace1920765b6/Screenshots/Success.jpg" alt="Сериализация прошла успешно" title="Сериализация прошла успешно"/></p>
+<p align="center"><img src="https://github.com/MindTrader/DataSerialization/blob/98279c2bfb1ae6cc6d9b16efe086c1446f563c44/OtherFiles/Screenshots/Success.jpg" alt="Сериализация прошла успешно" title="Сериализация прошла успешно"/></p>
 
-<p align="center"><img src="https://github.com/MindTrader/Data_Serialization/blob/dd3cb601819b0028cd4e48c1f475ace1920765b6/Screenshots/Save.jpg" alt="Сохраните результат" title="Сохраните результат"/></p>
+<p align="center"><img src="https://github.com/MindTrader/DataSerialization/blob/98279c2bfb1ae6cc6d9b16efe086c1446f563c44/OtherFiles/Screenshots/Save.jpg" alt="Сохраните результат" title="Сохраните результат"/></p>
 
 Однако в процессе сериализации могут возникнуть ошибки, при которых сериализация будет прервана и пользователю будет выведено сообщение об ошибке:
 
-<p align="center"><img src="https://github.com/MindTrader/Data_Serialization/blob/dd3cb601819b0028cd4e48c1f475ace1920765b6/Screenshots/Fail_1.jpg" alt="Ошибка сериализации" title="Ошибка сериализации"/></p>
+<p align="center"><img src="https://github.com/MindTrader/DataSerialization/blob/98279c2bfb1ae6cc6d9b16efe086c1446f563c44/OtherFiles/Screenshots/Fail_1.jpg" alt="Ошибка сериализации" title="Ошибка сериализации"/></p>
 
-<p align="center"><img src="https://github.com/MindTrader/Data_Serialization/blob/dd3cb601819b0028cd4e48c1f475ace1920765b6/Screenshots/Fail_2.jpg" alt="Ошибка сериализации" title="Ошибка сериализации"/></p>
+<p align="center"><img src="https://github.com/MindTrader/DataSerialization/blob/98279c2bfb1ae6cc6d9b16efe086c1446f563c44/OtherFiles/Screenshots/Fail_2.jpg" alt="Ошибка сериализации" title="Ошибка сериализации"/></p>
 
 В таком случае пользователь должен выбрать подходящий файл и повторить сериализацию.
 
@@ -39,6 +39,9 @@
  т.е. главное окно примет вид начального состояния (первый скриншот) и пользователь сможет повторить вышеописанные действия.
  
  ## Тестирование приложения
- Для тестирования приложения, точнее метода `Serializer.Serialize(string pathToXml)`(определён в файле "Solution/DataSerialization/Serializer.cs"), было создано 5 Unit тестов, проверяющих работу метода в различных ситуациях.
- Исходный код тестов вы можете увидеть в файле "Solution/DataSerializationTests/SerializerTests.cs" данного репозитория. В некоторых тестах были использованы различные файлы xml, 
- отличающиеся от исходного ("InitialFiles/test.xml") - они расположены в каталоге "Solution/DataSerializationTests/testFiles"
+ Для тестирования приложения, точнее метода `Serializer.Serialize(string pathToXml)`(определён в файле "DataSerialization/Serializer.cs"), было создано 5 Unit тестов, проверяющих работу метода в различных ситуациях.
+ Исходный код тестов вы можете увидеть в файле "DataSerializationTests/SerializerTests.cs". В некоторых тестах были использованы различные файлы xml, 
+ отличные от исходного ("OtherFiles/InitialFiles/test.xml") - они расположены в каталоге "DataSerializationTests/testFiles"
+
+## Установка приложения
+Чтобы установить приложение - запустите установочный файл "OtherFiles/ForInstallation/setup.exe" и дождитесь окончания установки. После этого на рабочем столе появится ярлык для запуска приложения "Data Serialization"
