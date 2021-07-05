@@ -1,5 +1,5 @@
 # Data Serialization
-Данное приложение создано для решения следующей задачи:  сериализация приложенного файла test.XML в JSON. Полученный JSON должен выглядить (не обязательно быть один к одному) как test.JSON — оба файла лежат в папке "OtherFiles/InitialFiles".
+Данное приложение создано для решения следующей задачи:  сериализация приложенного файла test.XML в JSON. Полученный JSON должен выглядить (не обязательно быть один к одному) как test.JSON — оба файла лежат в папке "OtherFiles/TestFiles".
 
 Целевая платформа - .Net Framework 4.6.1
 
@@ -41,7 +41,7 @@
  ## Тестирование приложения
  Для тестирования приложения, точнее метода `Serializer.Serialize(string pathToXml)`(определён в файле "DataSerialization/Serializer.cs"), было создано 5 Unit тестов, проверяющих работу метода в различных ситуациях.
  Исходный код тестов вы можете увидеть в файле "DataSerializationTests/SerializerTests.cs". В некоторых тестах были использованы различные файлы xml, 
- отличные от исходного ("OtherFiles/InitialFiles/test.xml") - они расположены в каталоге "DataSerializationTests/testFiles"
+ отличные от исходного ("OtherFiles/TestFiles/test.xml") - они расположены в каталоге "DataSerializationTests/testFiles"
 
 ## Установка приложения
 Чтобы установить приложение - запустите установочный файл "OtherFiles/ForInstallation/setup.exe" и дождитесь окончания установки. После этого на рабочем столе появится ярлык для запуска приложения "Data Serialization"
