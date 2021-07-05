@@ -9,33 +9,31 @@ namespace DataSerialization
     {
         public static string Serialize(string pathToXml)
         {
-            //Загрузка XML данных из выбранного файла
-            string xmlFile = File.ReadAllText(pathToXml);
+            string xmlFileStr = File.ReadAllText(pathToXml);
+
+            if(string.IsNullOrEmpty(xmlFileStr))
+                throw (new Exception("Выбранный вами файл не содержит данных"));
 
             XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.LoadXml(xmlFile);
+            xmlDoc.LoadXml(xmlFileStr);
 
-            //Проверка на наличие и получение массива элементов "ProductOccurence"
             XmlNodeList products = xmlDoc.GetElementsByTagName("ProductOccurence");
             if (products.Count == 0)
                 throw (new Exception("Выбранный вами xml не содержит элементов \"ProductOccurence\". Пожалуйста, выберите корректный файл и повторите попытку"));
 
             JArray jProducts = new JArray();
 
-            //Парсинг элементов ProductOccurence и сериализация в JSON
+            //Парсинг элементов ProductOccurence и их сериализация
             foreach (XmlNode product in products)
             {
                 XmlNode id = product.Attributes.GetNamedItem("Id");
                 XmlNode name = product.Attributes.GetNamedItem("Name");
                 XmlNode attrs = product.SelectSingleNode("Attributes");
-
-                //Если текущий элемент "ProductOccurence" не содержит ни единого поля для сериализации - пропускаем его
-                if (id == null && name == null && attrs == null)
+            
+                if (id == null && name == null && attrs == null) //Если есть пустые элементы - пропускаем
                     continue;
 
-                //Сериализация полей Id & Name
                 JObject jProduct = new JObject();
-
                 jProduct.Add("Id", id != null ? id.Value : "");
                 jProduct.Add("Name", name != null ? name.Value : "");
 
@@ -63,14 +61,11 @@ namespace DataSerialization
                 }
                 jProduct.Add("Props", jAttrs);
 
-                //Завершение сериализации очередного элемента ProductOccurence, добавление в массив
                 jProducts.Add(jProduct);
-            }
-            //Если в xml ни один из элементов ProductOccurence не содержит необходимых данных для сериализации - ошибка сериализации
-            if (jProducts.Count == 0)
+            }           
+            if (jProducts.Count == 0) //Если в xml ни один из элементов ProductOccurence не содержит необходимых данных для сериализации - ошибка сериализации
                 throw (new Exception("В выбранном xml ни один из элементов не содержит нужной для сериализации информации"));
-
-            //Метод возвращает строку JSON данных для дальнейшей записи в выбранный пользователем файл
+          
             return jProducts.ToString();
         }
     }

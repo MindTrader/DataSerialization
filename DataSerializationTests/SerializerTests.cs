@@ -33,7 +33,7 @@ namespace DataSerialization.Tests
 
         [DataTestMethod]
         [DataRow("..\\..\\testFiles\\test_empty.xml")]
-        [ExpectedException(typeof(System.Xml.XmlException))]
+        [ExpectedException(typeof(Exception))]
         public void Serialize_EmptyXmlFile_ExceptionExpected(string pathToXml)
         {
             Serializer.Serialize(pathToXml);
