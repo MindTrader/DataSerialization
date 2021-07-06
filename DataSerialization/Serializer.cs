@@ -11,7 +11,7 @@ namespace DataSerialization
         {
             string xmlFileStr = File.ReadAllText(pathToXml);
 
-            if(string.IsNullOrEmpty(xmlFileStr))
+            if (string.IsNullOrEmpty(xmlFileStr))
                 throw (new Exception("Выбранный вами файл не содержит данных"));
 
             XmlDocument xmlDoc = new XmlDocument();
@@ -29,13 +29,15 @@ namespace DataSerialization
                 XmlNode id = product.Attributes.GetNamedItem("Id");
                 XmlNode name = product.Attributes.GetNamedItem("Name");
                 XmlNode attrs = product.SelectSingleNode("Attributes");
-            
+
                 if (id == null && name == null && attrs == null) //Если есть пустые элементы - пропускаем
                     continue;
 
-                JObject jProduct = new JObject();
-                jProduct.Add("Id", id != null ? id.Value : "");
-                jProduct.Add("Name", name != null ? name.Value : "");
+                JObject jProduct = new JObject
+                {
+                    { "Id", id != null ? id.Value : "" },
+                    { "Name", name != null ? name.Value : "" }
+                };
 
                 //Сериализация массива атрибутов (Props)
                 JArray jAttrs = new JArray();
@@ -43,18 +45,16 @@ namespace DataSerialization
                 {
                     foreach (XmlNode attr in attrs.ChildNodes)
                     {
-                        JObject jAttr = new JObject();
-
                         XmlNode attrName = attr.Attributes.GetNamedItem("Name");
                         XmlNode type = attr.Attributes.GetNamedItem("Type");
                         XmlNode value = attr.Attributes.GetNamedItem("Value");
 
-                        if (attrName != null)
-                            jAttr.Add("Name", attrName.Value);
-                        if (type != null)
-                            jAttr.Add("Type", type.Value);
-                        if (value != null)
-                            jAttr.Add("Value", value.Value);
+                        JObject jAttr = new JObject
+                        {
+                            { "Name", attrName != null ? attrName.Value : "" },
+                            { "Type", type != null ? type.Value : "" },
+                            { "Value", value != null ? value.Value : "" }
+                        };
 
                         jAttrs.Add(jAttr);
                     }
@@ -62,10 +62,10 @@ namespace DataSerialization
                 jProduct.Add("Props", jAttrs);
 
                 jProducts.Add(jProduct);
-            }           
+            }
             if (jProducts.Count == 0) //Если в xml ни один из элементов ProductOccurence не содержит необходимых данных для сериализации - ошибка сериализации
                 throw (new Exception("В выбранном xml ни один из элементов не содержит нужной для сериализации информации"));
-          
+
             return jProducts.ToString();
         }
     }
