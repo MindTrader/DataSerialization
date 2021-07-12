@@ -9,13 +9,8 @@ namespace DataSerialization
     {
         public static string Serialize(string pathToXml)
         {
-            string xmlFileStr = File.ReadAllText(pathToXml);
-
-            if (string.IsNullOrEmpty(xmlFileStr))
-                throw (new Exception("Выбранный вами файл не содержит данных"));
-
             XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.LoadXml(xmlFileStr);
+            xmlDoc.Load(pathToXml);
 
             XmlNodeList products = xmlDoc.GetElementsByTagName("ProductOccurence");
             if (products.Count == 0)
