@@ -28,12 +28,6 @@ namespace DataSerialization
                 if (id == null && name == null && attrs == null) //Если есть пустые элементы - пропускаем
                     continue;
 
-                JObject jProduct = new JObject
-                {
-                    { "Id", id != null ? id.Value : "" },
-                    { "Name", name != null ? name.Value : "" }
-                };
-
                 //Сериализация массива атрибутов (Props)
                 JArray jAttrs = new JArray();
                 if (attrs != null)
@@ -54,7 +48,13 @@ namespace DataSerialization
                         jAttrs.Add(jAttr);
                     }
                 }
-                jProduct.Add("Props", jAttrs);
+
+                JObject jProduct = new JObject
+                {
+                    { "Id", id != null ? id.Value : "" },
+                    { "Name", name != null ? name.Value : "" },
+                    { "Props",  jAttrs}
+                };
 
                 jProducts.Add(jProduct);
             }
